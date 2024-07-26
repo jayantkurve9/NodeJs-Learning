@@ -1,0 +1,112 @@
+require('/someFile'); --> absolute path
+require('./someFile'); --> relative path
+what is absolute and relative path and difference between them?
+
+------------------
+form tag html
+
+------------------
+npm init - This command is used to add package.json to our project with all the scripts.
+npm run <script_name> : Used to run the script defined in package.json.
+npm install <dependency> --save-dev: This will install the dependency that will pe used only while development and not on production.(It is save as a devDependency in package.json)
+npm- It is a cloud package repository which is used to install and manage 3rd party packages.
+
+------------------
+app.use('*',(req,res,next)=>{}) :- Execute for each and every request.
+app.use((req,res,next)=>{}) :- Execute only if request hasn't handled by any other route.
+
+-------------------
+req body parsing
+
+-> app.use(express.json()) : used to parse req body passed as a json object in payload.
+-> app.use(bodyParsed.urlEncoded({extended: false})) : used to parse req body passed through form(html form).
+----------------------
+absolute and relative path
+core modules: path, fs, etc
+--------------------------
+css rem
+display block
+button:hover,
+button:active
+
+--------------------
+module.exports and exports
+------------
+In express, we can serve static html pages using sendFile method, but what if I want to add some dynamic data to it.
+Example: I want to add some text field value to our html page but cannot do that.
+For this we need templating engine concept.
+
+Templating engines/View engines is used to display dyanamic content with the html, some examples of templating engines are ejs, pug(jade), handlebars.
+EJS: Use normal HTML and plain JavaScript in your templates. Syntax: <p><%= name %></p>
+Pug(Jate): Use minimal HTML and custom template language. Syntax: p #{name}
+Handlebars: Use normal HTML and custom template language. Syntax: <p>{{ name }}</p>
+
+
+express-handlebars has build in integration with handlebars in express.
+pug and ejs are core modules.
+
+res.sendFile() is used to send static html files as a response.
+res.render() is used to send template to the response
+
+Pug:
+res.render(<pug file>, <data as object>)
+To access in pug file:
+h1 #{<key from the data passed>}
+ex: h1 #{title}
+How to pass id with element in pug: input(type="text", name="title")#title
+
+Pug can evaluate javascript expression but handlebars can't, we need to evaluate express in js file and pass only single value in data object.
+ejs does not support layouts like in pug and handlebars
+---------------------
+patch and minor version in package update
+-------------------
+&& vs ??
+---------------
+event driven programming
+multithreading
+clustering
+-------------------
+MVC: Model view and controller which talks about seperation of concerns.
+Models: Represent your data in your code. Work with your data (e.g. save, fetch).
+Views: What the users sees. Decoupled from your code.
+Controllers: Connecting your Models and your Views. Contains the 'in-between' logic.
+
+In our model, we define class lets say name Product.
+So whenever we create any object of this call, its constructor will call and suppose also we defined one save method inside it which will we can call on object to save the object data on data base, this is pretty cool.
+But what if we want all the products, we cannot create one dummy product object with dummy title and with that object call get method which we would suppose to write on products class.
+so what we can do is write fetchAll method with static keyword and this method we can directly call using class name like Products.fetchAll and it will return us all the products.
+----------------------------------------------------
+One way to pass data with api is with api url ex: /product/:productId, this we are passing in request params and is usually used for get request
+Another way to pass data is with request body, this usually used for post request ex:
+<form action="/cart" method="post">
+	<button class="btn" type="submit">Add to Cart</button>
+	<input type="hidden" name="productId" value="<%= product.id %>"/>
+</form>
+on clicking the button with type as submit the request goes on /cart url and we can get there data like req.body.productId
+----------------------------------------
+Query parameters- data that passes along with url after '?' in key value pair seperated by '&'
+ex: https://localhost:3000/product/123?edit=true&id=321
+--------------------------------------
+SQL vs NoSQL
+SQL is schema based and can be used where we have fixed schema
+NoSQL is schemaless and can be used where we don't have fixed schema or not sure about the values that would be stored.
+SQL can be used to defined relations between tables 
+NoSQL cannot have direct feature to define relation between documents, we can copy data between documents
+
+Horizontal and vertical scaling
+Scaling - On growing of our application we need to increase/scale our servers
+Horizontal Scaling - We can add more servers and merge data of all servers into one database.
+Vertical Scaling - We can improve capacity of existing server or improve hardware to handle more load on existing server only.
+
+-----------------------------------
+Sequelize
+It is an ORM(Object Relation Mapping) tool for javascript, like hibernate in java.
+If using this, no need to write SQL queries for sql operations ORM handles that for us.
+
+See the project of SQL and sequelize to learn how its configured with node js.
+----------------------------------------
+lets say we have if and else block
+if block is returning data from database hence it is returning promise.
+and in else block we are returning plain javascript object
+But, but return value should be of same type, hence we can wrap out plain js object in Promise.resolve(obj).
+But if this if and else block is returning values from .then function then plain js object automatically converted to Promise

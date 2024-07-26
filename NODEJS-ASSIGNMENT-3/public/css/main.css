@@ -1,0 +1,23 @@
+body {
+	font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+	text-align: center;
+	color: rgb(4, 124, 54);
+}
+
+h1:hover {
+	text-shadow: 2px 2px 5px rgb(86, 248, 99);
+	cursor: pointer;
+}
+
+.user-list {
+	text-align: center;
+	list-style-type: none;
+	color: rgb(218, 10, 45);
+	font-size: large;
+	font-weight: 700;
+}
+
+
