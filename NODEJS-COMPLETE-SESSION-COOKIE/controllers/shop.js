@@ -9,6 +9,7 @@ exports.getProducts = (req, res, next) => {
                 prods: products,
                 docTitle: "All Products",
                 path: "/products",
+                isAuthenticated: req.session.isLoggedIn,
             };
             res.render("shop/product-list", templateData);
         })
@@ -25,6 +26,7 @@ exports.getProduct = (req, res, next) => {
                 product: product,
                 docTitle: product.title,
                 path: "/products",
+                isAuthenticated: req.session.isLoggedIn,
             });
         })
         .catch((err) => console.log(err));
@@ -37,6 +39,7 @@ exports.getIndex = (req, res, next) => {
                 prods: products,
                 docTitle: "Shop",
                 path: "/",
+                isAuthenticated: req.session.isLoggedIn,
             };
             res.render("shop/index", templateData);
         })
@@ -54,6 +57,7 @@ exports.getCart = (req, res, next) => {
                 path: "/cart",
                 docTitle: "Your Cart",
                 products: products,
+                isAuthenticated: req.session.isLoggedIn,
             };
             res.render("shop/cart", templateData);
         })
@@ -65,7 +69,6 @@ exports.postCart = (req, res, next) => {
     console.log("Product id", prodId);
     Product.findById(prodId)
         .then((product) => {
-            console.log("India", product);
             return req.user.addToCart(product);
         })
         .then((result) => {
@@ -125,6 +128,7 @@ exports.getOrders = (req, res, next) => {
                 path: "/orders",
                 docTitle: "Your Orders",
                 orders: orders,
+                isAuthenticated: req.session.isLoggedIn,
             };
             res.render("shop/orders", templateData);
         })

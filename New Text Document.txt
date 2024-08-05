@@ -110,3 +110,19 @@ if block is returning data from database hence it is returning promise.
 and in else block we are returning plain javascript object
 But, but return value should be of same type, hence we can wrap out plain js object in Promise.resolve(obj).
 But if this if and else block is returning values from .then function then plain js object automatically converted to Promise
+---------------------------------------------------------------------------------------------------------------------------
+Sequelize work with queries but mongoose works with data.
+Mongoose: 
+It is an ODM (Object Document Mapping) library.
+-----------------------------------------------------------------------
+when we get any request in route and send response from that route, whatever is there in request suppose some data that will get lost after sending response
+Because job is done after sending response.
+Cookie: It is a small piece of data like login information we will store on user browser and that will help us for all other subsequent requests.
+---------------------------------------------------------------------
+Session: We can create a session for each user so that it will be easy to verify the login status of user or we can store another information as well in session for that specific user
+One session is created for each user and to identify user uniquely session store on cookie whose value is hashed(unique). 
+When user send request the cookie is also send with the request to fetch the session data using that cookie.
+express-session package we can use to manage session.
+Sessions can be use to store data that user need for each request and that is specific to user.
+But using express-session gives us limited memory and cannot suitable for production app where we might have n number of users.
+In that case we can use mongodb to store session data and for this we can use connect-mongodb-session package.
